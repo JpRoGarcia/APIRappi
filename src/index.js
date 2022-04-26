@@ -1,0 +1,45 @@
+require('./config/index.config');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
+
+const app = express();
+
+// default options
+app.use(fileUpload());
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+// parse application/json
+app.use(bodyParser.json());
+
+app.get('/', function (req, res) {
+    res.send('Bienvenido API REST de Tienda');
+});
+
+app.use(require("./routers/indexRoutes"));
+
+mongoose.connect(process.env.MONGOURL, (err) => {
+    if (err) {
+        console.log(err);
+    }
+    console.log("Se conecto");
+});
+
+const PORT = process.env.PORT
+
+app.listen(PORT, () => {
+    console.log(`API escuchando en: http://localhost:${PORT}`);
+});
