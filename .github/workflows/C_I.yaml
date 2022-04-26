@@ -16,6 +16,6 @@ jobs:
       run: |
         npm install
         npm install jshint
-    - name: Run ESLint static code analysis
-      run: |
-        eslint . --ext .js
+    #- name: Run ESLint static code analysis
+    #  run: |
+    #    eslint . --ext .js
