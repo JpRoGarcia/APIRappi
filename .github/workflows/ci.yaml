@@ -2,7 +2,7 @@ name: Continous Integration with node.js
 
 on: 
   pull_request:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
   continuos_integration:
