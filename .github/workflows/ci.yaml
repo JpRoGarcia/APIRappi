@@ -5,7 +5,7 @@ on:
     branches: [ dev ]
 
 jobs:
-  continuos_integration:
+  continous_integration:
     runs-on: ubuntu-latest
     stesp:
     - name: Code checkout
