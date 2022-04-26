@@ -1,4 +1,4 @@
-name: Continous Integration with node.js
+name: Continous Integration 
 
 on: 
   pull_request:
@@ -7,14 +7,14 @@ on:
 jobs:
   continous_integration:
     runs-on: ubuntu-latest
-    stesp:
+    steps:
     - name: Code checkout
     - uses: actions/checkout@v3
     - name: Set up Node.js
     - uses: actions/setup-node@v3
-    with:
-      node-version: 17
-    - name: Install dependences
+      with:
+        node-version: 17
+    - name: Install dependencies
       run: |
         npm install
         npm install jshint
