@@ -1,8 +1,6 @@
 name: Continous Integration 
 
-on: 
-  pull_request:
-    branches: [ dev ]
+on: [push]
 
 jobs:
   continous_integration:
