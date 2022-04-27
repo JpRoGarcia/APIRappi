@@ -1,7 +1,7 @@
 FROM node:14-alpine
-RUN mkdir /my_app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 COPY package.json .
-WORKDIR /my_app
 RUN npm install
 COPY . .
 EXPOSE 3000
