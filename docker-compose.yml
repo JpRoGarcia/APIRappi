@@ -1,8 +1,16 @@
 version: '3.4'
-
 services:
-  pruebperra:
-    image: pruebperra
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    web:
+      container_name: rappi
+      restart: always
+      build: .
+      ports:
+          - "4001:3000"
+      links:
+          - mongodb
+    postgres:
+      container_name: mongodb
+      image: mongodb
+      ports:
+          - "2700:2700"
+          
