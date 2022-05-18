@@ -1,18 +1,36 @@
-name: Continous delivery
+name: Publish Docker image
 
 on:
   workflow_run:
     workflows: [ "Continous Integration" ]
-    types: [ completed ]
-    branches: [ develop ]
+    types: [published]
 
 jobs:
   on-success:
+    name: Push Docker image to Docker Hu
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-    - name: Code checkout
-      uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag rappi:$(git rev-parse --short HEAD)
+      - name: Code checkout
+        uses: actions/checkout@v3
+      
+    - name: Log in to Docker Hub
+       uses: docker/login-action@v2
+       with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+ 
+   - name: Extract metadata (tags, labels) for Docker
+     id: meta
+     uses: docker/metadata-action@v4
+     with:
+       images: pea0715/prueba:1.0
+      
+   - name: Build and push Docker image
+     uses: docker/build-push-action@v2
+     with:
+       context: .
+       push: true
+       tags: ${{ steps.meta.outputs.tags }}
+       labels: ${{ steps.meta.outputs.labels }}o
+      
       
