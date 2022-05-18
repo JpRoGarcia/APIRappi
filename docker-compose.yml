@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  pruebperra:
+    image: pruebperra
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+
+
+
+
