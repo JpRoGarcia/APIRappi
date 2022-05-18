@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
 
-jobs:
+on:
   push_to_registry:
     runs-on: ubuntu-latest
     name: Push Docker image to Docker Hu
@@ -29,7 +29,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags:   ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
       
