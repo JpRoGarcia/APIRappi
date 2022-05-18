@@ -7,12 +7,12 @@ on:
     branches: [ develop ]
 
 jobs:
-  on-success:
+    push_to_registry:
+    name: Push Docker image to Docker Hu
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
     - name: Code checkout
       uses: actions/checkout@v3
+      
     - name: Log in to Docker Hub
      uses: docker/login-action@v2
      with:
