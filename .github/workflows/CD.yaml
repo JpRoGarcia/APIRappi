@@ -1,11 +1,6 @@
 name: Continous delivery
 
-on: push
-  workflow_run:
-    workflows: [ "Continous Integration" ]
-    types: [ completed ]
-    branches: [ master ]
-    types: [published]
+on: [ push ]
 jobs:
   on-success:
     runs-on: ubuntu-latest
