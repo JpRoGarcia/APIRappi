@@ -6,7 +6,6 @@ on:
     types: [ completed ]
     branches: [ develop ]
     types: [published]
-
 jobs:
   on-success:
     runs-on: ubuntu-latest
