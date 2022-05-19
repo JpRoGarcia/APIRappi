@@ -1,6 +1,5 @@
 name: Continous delivery
 
-
 on:
   workflow_run:
     workflows: [ "Continous Integration" ]
