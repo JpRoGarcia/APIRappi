@@ -1,6 +1,6 @@
 name: Continous delivery
 
-on:
+on: [push]
   workflow_run:
     workflows: [ "Continous Integration" ]
     types: [ completed ]
