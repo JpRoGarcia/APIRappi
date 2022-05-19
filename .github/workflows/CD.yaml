@@ -19,7 +19,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: pea0715/prueba:1.0
+        images: pea0715/prueba
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
